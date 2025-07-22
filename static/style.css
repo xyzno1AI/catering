@@ -7,10 +7,17 @@
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: backgroundShift 10s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundShift {
+    0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    100% { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
 }
 
 .container {
@@ -25,13 +32,21 @@ h1 {
     font-size: 2.5em;
     margin-bottom: 30px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.3); }
+    100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.6); }
 }
 
 .screen {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 50px rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 .hidden {
@@ -99,10 +114,18 @@ h1 {
 }
 
 .scores, .controls {
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scores:hover, .controls:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
 .scores h3, .controls h3 {
@@ -121,8 +144,17 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
+    padding: 12px 15px;
     border-bottom: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(248,249,250,0.8) 100%);
+    transition: all 0.2s ease;
+}
+
+.player-score:hover {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    transform: translateX(5px);
 }
 
 .player-name {
@@ -150,9 +182,15 @@ h1 {
 #game-canvas {
     border: 3px solid #333;
     border-radius: 10px;
-    background: #000;
+    background: linear-gradient(45deg, #0a0a0a 0%, #1a1a1a 100%);
     max-width: 100%;
     height: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+#game-canvas:hover {
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.3), inset 0 0 20px rgba(255,255,255,0.05);
 }
 
 .game-status {
