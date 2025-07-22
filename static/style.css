@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.screen {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Login Screen */
+.login-form {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-form h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.login-form input:focus {
+    border-color: #667eea;
+}
+
+.login-form button, #leave-game {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.login-form button:hover, #leave-game:hover {
+    transform: translateY(-2px);
+}
+
+/* Game Screen */
+#game-screen {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.game-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.game-area {
+    flex: 2;
+    text-align: center;
+}
+
+.scores, .controls {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.scores h3, .controls h3 {
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 5px;
+}
+
+#scoreboard {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.player-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.player-status {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.player-status.dead {
+    color: #e74c3c;
+}
+
+.player-status.alive {
+    color: #27ae60;
+}
+
+.controls p {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+#game-canvas {
+    border: 3px solid #333;
+    border-radius: 10px;
+    background: #000;
+    max-width: 100%;
+    height: auto;
+}
+
+.game-status {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+#connection-status {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.connected {
+    background: #d4edda;
+    color: #155724;
+}
+
+.disconnected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+#leave-game {
+    width: auto;
+    padding: 10px 20px;
+    background: #e74c3c;
+}
+
+#leave-game:hover {
+    background: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #game-screen {
+        flex-direction: column;
+    }
+    
+    .game-info {
+        order: 2;
+    }
+    
+    .game-area {
+        order: 1;
+    }
+    
+    .game-status {
+        order: 3;
+    }
+    
+    #game-canvas {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+}
